@@ -54,6 +54,18 @@ router.post('/login', async (req,res) => {
     const { email, passwort } = req.body;
 
     try {
+        const user = await db.collection('User').findOne({ _id: userId });
+
+        if (user.rows.length >0) {
+            console.log('existiert')
+        } else {
+            console.log('existiert nicht')
+        }
+    } catch (error) {
+        
+    }
+
+    try {
         // Überprüfe zunächst, ob der Benutzer existiert und hole das Passwort für den Vergleich
         const userQuery = await client.query('SELECT * FROM kunde WHERE email = $1', [email]);
 
@@ -70,12 +82,7 @@ router.post('/login', async (req,res) => {
                 // Sendet den Token und Kundendetails zurück
                 res.json({
                     token,
-                    Kunde: {
-                        Auftrag_id: auftragsIds,
-                        Kunden_id: user.kunde_id,
-                        Adresse_id: adresseIds,
-                        Reg: true
-                    }
+                    
                 });
             } else {
                 res.status(400).json({ message: "Ungültiges Passwort" });
