@@ -28,14 +28,10 @@ export default createStore({
     }
   },
   actions: {
-    login({commit}, authData){
+    login(authData){
       axios.post('http://localhost:8000/users/login', authData)
       .then(res => {
-        console.log("Backend Response", res);
-        commit('authUser', {
-          Id: res.data[0].Id,
-          Rolle: res.data[0].Rolle
-        })
+        sessionStorage.setItem('Kunde', JSON.stringify(res.data))        
       })
     }
   },

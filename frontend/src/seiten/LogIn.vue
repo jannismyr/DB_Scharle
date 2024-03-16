@@ -17,6 +17,7 @@
     <div v-if="Nutzer">
         {{ Nutzer }}
     </div>
+
 </template>
 
 <script>
@@ -26,6 +27,7 @@ export default {
         return {
             username: '',
             password: '',
+            Nutzer: null
         };
     },
     methods: {
@@ -37,7 +39,7 @@ export default {
                 benutzername: this.username,
                 passwort: this.password
             })
-            .then(()=> this.Nutzer = this.$store.state.nutzer)
+            .then(()=> this.Nutzer = this.$store.state.Nutzer)
             .catch(error => {
                 alert(error)
                 });
