@@ -7,7 +7,7 @@ import NeueAnzeige from './seiten/NeueAnzeige.vue';
 import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
 import LogIn from './seiten/LogIn.vue';
-
+import vuex from './vuex/index'
 
 
 createApp(App)
@@ -31,4 +31,5 @@ createApp(App)
 
     ]
 }))
+.use(vuex)
 .mount('#app')
