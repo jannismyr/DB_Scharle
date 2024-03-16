@@ -11,13 +11,12 @@ router.route('/')
 })
 .post(async (req,res) => {
 
-    console.log('moin')
     let Id = '1'
 
-    let Waffe = 'Messer'
+    let Waffe = 'Schaufel'
 
     await db.collection('Case').insertOne({
-        Id: Id,
+        _id: Id,
         Tatwaffe: Waffe
     })
     .then(
