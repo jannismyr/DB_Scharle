@@ -1,0 +1,354 @@
+  /* Alles für die NavBar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+nav {
+    background-color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;  
+    padding: 0;
+    overflow: hidden;
+    border: none;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+  
+  .container {
+    /*display: grid;
+    grid-template-columns:  repeat(3, 1fr);*/
+    gap: 10px;
+    max-width: 800px; 
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  .Veranstaltungsliste{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr;
+  }
+
+.box {
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  border-radius: 10px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sanfter Schatten für Tiefe */
+}
+  
+
+/* Stile für die Buttons */
+.search-button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+  /* Button Veranstaltungen*/
+.custom-button {
+    display: inline-flex;
+    margin-right: 10px;;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #333;
+    color: #ffffff;
+    border: 2px solid #3a3939;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+  
+  .custom-button:hover {
+    background-color: #333;
+    border-color: #3a3939;
+    color: #ffffff;
+  }
+
+    /* Suchfeld */
+  .search-form {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    align-items: baseline;
+  }
+  
+  .search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  
+  .search-button {
+    display: flex;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Hover-Effekt für den Suchbutton */
+  .search-button:hover {
+    background-color: #747676;
+  }
+
+  /* Eingabe Formular zum Erstellen einer Veranstaltung */
+  /* Allgemeine Formatierung */
+#eventForm {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Stil für Labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Stil für Texteingabefelder und Textarea */
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+
+}
+
+/* Stil für den Submit-Button */
+input[type="submit"] {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Änderung des Mauszeigers bei Überfahren des Submit-Buttons */
+input[type="submit"]:hover {
+  background-color: #747676;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* CSS für Genehmigen Button */
+.genehmigen-button {
+  background-color: #168a1a; /* Grüne Hintergrundfarbe */
+  color: white;             /* Weiße Textfarbe */
+  padding: 10px 20px;       /* Padding innen */
+  border: none;             /* Kein Rand */
+  border-radius: 5px;       /* Abgerundete Ecken */
+  cursor: pointer;          /* Cursor als Zeiger */
+  font-size: 16px;          /* Schriftgröße */
+  transition: 0.3s;         /* Übergangseffekt */
+}
+
+.genehmigen-button:hover {
+  background-color: #45a049; /* Dunkleres Grün beim Hover */
+}
+
+/* ALLES TEST FÜR HIGHLIGHTS */
+/* Stil für das Highlight-Formular */
+.highlight-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+/* Stil für das Überschrift-Feld im Highlight-Formular */
+.highlight-form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Stil für die Beschreibung im Highlight-Formular */
+.highlight-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none; /* Ermöglicht das vertikale Vergrößern/Verkleinern */
+}
+
+/* Stil für den Hinzufügen-Button im Highlight-Formular */
+.highlight-form button {
+  background-color: #303530;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.highlight-form button:hover {
+  background-color: #5b5f5b;
+}
+
+/* Stil für die Anzeige von Highlights */
+.highlight-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.highlight-list li {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.highlight-list h4 {
+  margin-top: 0;
+}
+
+.highlights-list {
+  list-style-type: none; /* Entfernt die Listensymbole */
+  padding: 0;
+}
+
+.highlight-item {
+  background-color: #f4f4f4; /* Hintergrundfarbe für jedes Highlight */
+  margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
+  padding: 10px; /* Innenabstand */
+  border-radius: 5px; /* Abgerundete Ecken */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Schatten für jedes Highlight */
+}
+
+.highlight-item strong {
+  color: #333; /* Farbe für die Überschrift des Highlights */
+}
+
+.delete-button {
+  display: inline-flex;
+  margin-right: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #D32F2F; /* Dunkelrot für Löschaktion */
+  color: #ffffff;
+  border: 2px solid #b71c1c; /* Etwas dunkler als Hintergrund für Kontrast */
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.delete-button:hover {
+  background-color: #b71c1c; /* Etwas heller beim Hover */
+  border-color: #7f0000; /* Dunkleres Rot für den Hover-Effekt */
+  color: #ffffff;
+}
+
+.detail-button {
+  display: inline-flex;
+  margin-right: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #38414b; /* Blau für Informationsaktionen */
+  color: #ffffff;
+  border: 2px solid #2e3134; /* Etwas dunkler als Hintergrund für Kontrast */
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.detail-button:hover {
+  background-color: #6f7275; /* Etwas heller beim Hover */
+  border-color: #747677; /* Dunkleres Blau für den Hover-Effekt */
+  color: #ffffff;
+}
+
+.save-button {
+  display: inline-flex;
+  margin-right: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #424242; /* Dunkelgrau für Speicheraktionen */
+  color: #ffffff;
+  border: 2px solid #373737; /* Etwas dunkler als der Hintergrund für Kontrast */
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.save-button:hover {
+  background-color: #373737; /* Etwas heller beim Hover */
+  border-color: #2C2C2C; /* Noch dunkleres Grau für den Hover-Effekt */
+  color: #ffffff;
+}
+
