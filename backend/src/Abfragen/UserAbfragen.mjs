@@ -2,9 +2,9 @@ import { client } from '../db.mjs'
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { Users } from '../data.mjs';
 
 
-import Users from '../data.js'
 
 const router = express.Router()
 const db = client.db('Test_Jannis');
