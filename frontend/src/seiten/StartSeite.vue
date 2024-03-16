@@ -3,16 +3,16 @@
        <h1>Hello World</h1>
        <div>
 
-        <div class="Veranstaltungsliste">
-      <VeranstaltungAllg v-for="Veranstaltung in AlleVeranstaltungen"
-        :key="Veranstaltung.id"
-        :Name="Veranstaltung.name"
-        :Datum="Veranstaltung.datum"
-        :Ort="Veranstaltung.ort"
-        :Preis="Veranstaltung.preis"
-        :Beschreibung="Veranstaltung.beschreibung"
-        :Genehmigung="Veranstaltung.genehmigung"
-        :veranstaltungId="Veranstaltung.id"
+        <div>
+      <AnzeigeKomp v-for="Fall in AlleVeranstaltungen"
+        :key="Fall.id"
+        :Name="Fall.name"
+        :Datum="Fall.datum"
+        :Ort="Fall.ort"
+        :Preis="Fall.preis"
+        :Beschreibung="Fall.beschreibung"
+        :Genehmigung="Fall.genehmigung"
+        :fallId="Fall.id"
       />
       <br>
     </div>
@@ -22,11 +22,16 @@
 </template>
 
 <script>
+import AnzeigeKomp from '../components/AnzeigeKomp.vue'
+
 export default {
     name: 'StartSeite',
+    components: {
+    AnzeigeKomp,
+  },
     data() {
         return {
-            // Hier kommen die Daten der Seite
+            
         };
     },
     methods: {

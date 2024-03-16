@@ -41,7 +41,7 @@ export const Users = [
     }
 ]
 
-const Fälle = [
+const Faelle = [
     
 ]
 
