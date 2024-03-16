@@ -45,7 +45,7 @@ const Fälle = [
     
 ]
 
-const Straftaten = [
+export const Straftaten = [
     {
         "_id": "1",
         "Name": "Mord"

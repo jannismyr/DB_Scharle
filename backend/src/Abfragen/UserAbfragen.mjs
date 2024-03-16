@@ -2,6 +2,9 @@ import { client } from '../db.mjs'
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 import Users from '../data.js'
@@ -9,11 +12,11 @@ import Users from '../data.js'
 const router = express.Router()
 const db = client.db('Test_Jannis');
 
-function generateAccessToken(userId) {
-    return jwt.sign({ userId }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
+function generateAccessToken(nutzername) {
+    return jwt.sign({ nutzername }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
 }
 
-function authenticateToken(req, res, next) {
+/*function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401);
@@ -23,7 +26,7 @@ function authenticateToken(req, res, next) {
         req.user = user;
         next();
     });
-}
+}*/
 
 router.route('/')
 .get(async (req,res) => {
@@ -51,48 +54,30 @@ router.route('/')
 })
 
 router.post('/login', async (req,res) => {
-    const { email, passwort } = req.body;
+    const { benutzername, passwort } = req.body;
 
     try {
-        const user = await db.collection('User').findOne({ _id: userId });
+        const user = await db.collection('User').findOne({ Benutzername: benutzername });
 
-        if (user.rows.length >0) {
-            console.log('existiert')
-        } else {
-            console.log('existiert nicht')
-        }
-    } catch (error) {
-        
-    }
-
-    try {
-        // Überprüfe zunächst, ob der Benutzer existiert und hole das Passwort für den Vergleich
-        const userQuery = await client.query('SELECT * FROM kunde WHERE email = $1', [email]);
-
-        if (userQuery.rows.length > 0) {
-            const user = userQuery.rows[0];
-            const validPassword = await bcrypt.compare(passwort, user.passwort);
+        if (user) {
+            const validPassword = await bcrypt.compare(passwort, user.Passwort)
 
             if (validPassword) {
-                // Hole die nicht abgeschlossenen Auftrags-IDs, falls vorhanden
-
-                // Generiere JWT-Token
-                const token = generateAccessToken(user.kunde_id);
-
-                // Sendet den Token und Kundendetails zurück
+                const token = generateAccessToken(user._id);
+                
                 res.json({
                     token,
-                    
-                });
-            } else {
-                res.status(400).json({ message: "Ungültiges Passwort" });
+                    Nutzer:{
+                        Id: user._id,
+                        Rolle: user.Rolle
+                    }
+                })
             }
         } else {
-            res.status(400).json({ message: "Kunde nicht gefunden" });
+            console.log('User existiert nicht')
         }
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
+    } catch (error) {
+        console.log(error.message)
     }
 })
 
