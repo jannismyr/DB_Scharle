@@ -1,23 +1,43 @@
-const Users= [
+export const Users = [
     {
-        "__id": "1",
-        "Name": "Simon"
+        "_id": "1",
+        "Benutzername": "Hoffi",
+        "Vorname": "Simon",
+        "Nachname": "Hofmann", 
+        "Passwort": "Simon123", 
+        "Rolle": "Admin"
     },
     {
         "_id": "2",
-        "Name": "Julian"
+        "Benutzername": "JannisM",
+        "Vorname": "Jannis",
+        "Nachname": "Meyer", 
+        "Passwort": "Jannis123", 
+        "Rolle": "Admin"
     },
     {
         "_id": "3",
-        "Name": "Tom"
+        "Benutzername": "JustusJonas",
+        "Vorname": "Justus",
+        "Nachname": "Jonas", 
+        "Passwort": "Justus123", 
+        "Rolle": "Ermittler"
     },
     {
         "_id": "4",
-        "Name": "Fritz"
+        "Benutzername": "MaxMuster",
+        "Vorname": "Max",
+        "Nachname": "Muster", 
+        "Passwort": "Max123", 
+        "Rolle": "Sachbearbeiter"
     },
     {
         "_id": "5",
-        "Name": "Janni"
+        "Benutzername": "Lisa87",
+        "Vorname": "Lisa",
+        "Nachname": "Schmidt",
+        "Passwort": "LisaPass123",
+        "Rolle": "Sachbearbeiter"
     }
 ]
 
