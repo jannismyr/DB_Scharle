@@ -55,7 +55,6 @@ router.route('/')
 
 router.post('/login', async (req,res) => {
     const { benutzername, passwort } = req.body;
-
     try {
         const user = await db.collection('User').findOne({ Benutzername: benutzername });
 
@@ -64,7 +63,6 @@ router.post('/login', async (req,res) => {
 
             if (validPassword) {
                 const token = generateAccessToken(user._id);
-                
                 res.json({
                     token,
                     Nutzer:{
