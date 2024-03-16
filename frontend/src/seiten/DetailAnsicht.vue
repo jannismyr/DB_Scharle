@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Detailansicht</h1>
+
     </div>
 </template>
 

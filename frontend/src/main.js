@@ -6,6 +6,9 @@ import StartSeite from './seiten/StartSeite.vue';
 import NeueAnzeige from './seiten/NeueAnzeige.vue';
 import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
+import LogIn from './seiten/LogIn.vue';
+
+
 
 createApp(App)
 .use(VueRouter.createRouter({
@@ -22,6 +25,9 @@ createApp(App)
 
         { path: '/bearbeiten', 
         component: AnzeigeBearbeiten },
+
+        { path: '/login', 
+        component: LogIn },
 
     ]
 }))

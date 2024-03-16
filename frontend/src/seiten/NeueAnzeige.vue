@@ -3,7 +3,7 @@
         <h1>Anlegen einer neuen Anzeige</h1>
 
 <!-- Eingabefelder zum Erstellen einer Anzeige -->
-   <form @submit.prevent="validateForm" id="eventForm">
+   <form @submit.prevent="validateForm" id="Form">
 <label for="caseName">Name:</label>
 <input type="text" id="caseName" name="caseName" v-model="this.Case.Name"  ><br><br>
 
