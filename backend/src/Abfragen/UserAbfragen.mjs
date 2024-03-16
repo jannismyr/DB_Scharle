@@ -10,6 +10,15 @@ router.route('/')
     const users = await db.collection('User').find({}).toArray();
     res.json(users)
 })
+.post(async (req,res) => {
+    await db.collection('Case').insertOne({
+        _id: Id,
+        Tatwaffe: Waffe
+    })
+    .then(
+        res.status(201).send('User hinzugefügt')
+    )
+})
 
 
 router.route('/:Id')
@@ -18,7 +27,7 @@ router.route('/:Id')
         const userId = req.params.Id; // Achte darauf, dass dies zu params.id geändert wurde
         console.log(userId);
 
-        const users = await db.collection('User').findOne({ Id: userId });
+        const users = await db.collection('User').findOne({ _id: userId });
 
         res.send(users);
     } catch (error) {
