@@ -2,11 +2,9 @@ import { client } from '../db.mjs'
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { Users } from '../data.mjs';
 import dotenv from 'dotenv';
 
 dotenv.config();
-
 
 const router = express.Router()
 const db = client.db('Test_Jannis');
@@ -141,7 +139,6 @@ router.route('/:Id')
         } else {
             res.status(403).send("Nicht für diese Aktion authorisiert");
         }
-    
     } catch (error) {
         console.log(error.message)
     }
