@@ -56,7 +56,7 @@ export const Straftaten = [
     },
     {
         "_id": "3",
-        "Name": "Raub"
+        "Name": "Hass und Hetze im Internet"
     },
     {
         "_id": "4",
