@@ -55,6 +55,7 @@ router.route('/')
 
 router.post('/login', async (req,res) => {
     const { benutzername, passwort } = req.body;
+
     try {
         const user = await db.collection('User').findOne({ Benutzername: benutzername });
 
@@ -98,6 +99,7 @@ router.route('/:Id')
 router.route('/prod/erstellen')
 .post(async (req,res) => {
 const saltRounds = 10
+
     Users.Users.forEach(element => {
         console.log(element)
         element.Passwort = bcrypt.hashSync(element.Passwort, saltRounds);

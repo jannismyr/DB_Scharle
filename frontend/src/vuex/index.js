@@ -17,9 +17,9 @@ export default createStore({
     }
   },
   mutations: {
-    authUser(state,userData){
-      state.Nutzer.user_id = userData.Id,
-      state.Nutzer.userRole = userData.Rolle
+    authUser(state,payload){
+      state.Nutzer.user_id = payload.Id,
+      state.Nutzer.userRole = payload.Rolle
     },
 
     clearAuthData(state){
@@ -28,12 +28,14 @@ export default createStore({
     }
   },
   actions: {
-    login(authData){
-      axios.post('http://localhost:8000/users/login', authData)
+    login({ commit },payload){
+      axios.post('/users/login', payload)
       .then(res => {
-        sessionStorage.setItem('Kunde', JSON.stringify(res.data))        
+        commit('authUser', res)
+        sessionStorage.setItem('Token', JSON.stringify(res.data.token))        
+        sessionStorage.setItem('Nutzer', JSON.stringify(res.data.Nutzer))        
       })
-    }
+    },
   },
   modules: {
   }
