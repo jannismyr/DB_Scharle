@@ -35,5 +35,11 @@ export default {
             }
         }
     },
+    created(){
+    if (!sessionStorage.getItem('Nutzer'))
+    {
+      window.location.replace('/login')
+    }
+  }
 }
 </script>

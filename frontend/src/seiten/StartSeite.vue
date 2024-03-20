@@ -33,16 +33,22 @@ export default {
     AnzeigeKomp,
     addBeschreibung,
   },
-    data() {
-        return {
-            
-        };
-    },
-    methods: {
-        // Hier kommen die Methoden der Seite
-    },
-    mounted() {
-        // Hier können Sie Code ausführen, der nach dem Rendern der Seite ausgeführt werden soll
+  data() {
+      return {
+          
+      };
+  },
+  methods: {
+      // Hier kommen die Methoden der Seite
+  },
+  mounted() {
+      // Hier können Sie Code ausführen, der nach dem Rendern der Seite ausgeführt werden soll
+  },
+  created(){
+    if (!sessionStorage.getItem('Nutzer'))
+    {
+      window.location.replace('/login')
     }
+  }
 };
 </script>
