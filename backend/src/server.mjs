@@ -1,9 +1,11 @@
 import express from 'express';
-//import {MongoClient} from 'mongodb'
 import { client } from './db.mjs'
 import cors from 'cors';
+import bcrypt from 'bcrypt';
 import UserQueries from './Abfragen/UserAbfragen.mjs'
 import CaseQueries from './Abfragen/FallAbragen.mjs'
+import { Users, Straftaten } from './data.mjs';
+
 
 const corsOptions = {
     origin: '*',
@@ -29,3 +31,18 @@ app.get('/', (req,res) => {
 app.use('/users', UserQueries)
 
 app.use('/case', CaseQueries)
+
+app.post('/Daten/erstellen', async (req,res)=> {
+    const saltRounds = 10
+
+    Users.forEach(element => {
+        element.Passwort = bcrypt.hashSync(element.Passwort, saltRounds);
+    })
+    
+    await db.collection('User').insertMany(Users)
+    await db.collection('Crime').insertMany(Straftaten)
+
+    res.status(201).send('Alle Daten angelegt')
+})
+
+
