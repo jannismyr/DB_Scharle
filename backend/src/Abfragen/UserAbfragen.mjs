@@ -151,7 +151,7 @@ router.route('/:Id')
     
         if (Rolle === "Admin") {
             await db.collection('User').deleteOne({_id: userId})
-            res.status(200).send("Alle Nutzer gelöscht");
+            res.status(200).send("Nutzer gelöscht");
             
         } else {
             res.status(403).send("Nicht für diese Aktion authorisiert");
