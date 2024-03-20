@@ -45,4 +45,8 @@ app.post('/Daten/erstellen', async (req,res)=> {
     res.status(201).send('Alle Daten angelegt')
 })
 
+app.get('/Suche', async(req,res) => {
+    
+})
+
 
