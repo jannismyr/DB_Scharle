@@ -122,7 +122,7 @@ router.route('/:Id')
         const Rolle = req.body.rolle
         if (Rolle === "Admin") {
             const body = req.body.Update
-            const userId = req.params.Id;
+            const userId = parseInt(req.params.Id);
             const user = await db.collection('User').findOne({ _id: userId });
     
             for (const key in body) {
