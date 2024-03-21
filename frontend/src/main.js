@@ -7,6 +7,8 @@ import NeueAnzeige from './seiten/NeueAnzeige.vue';
 import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
 import LogIn from './seiten/LogIn.vue';
+import TestTabs from './seiten/TestTabs.vue';
+
 import vuex from './vuex/index.js'
 
 
@@ -28,6 +30,9 @@ createApp(App)
 
         { path: '/login', 
         component: LogIn },
+        
+        { path: '/test', 
+        component: TestTabs },
 
     ]
 }))
