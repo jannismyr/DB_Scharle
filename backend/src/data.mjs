@@ -1,6 +1,6 @@
 export const Users = [
     {
-        "_id": "1",
+        "_id": 1,
         "Benutzername": "Hoffi",
         "Vorname": "Simon",
         "Nachname": "Hofmann", 
@@ -8,7 +8,7 @@ export const Users = [
         "Rolle": "Admin"
     },
     {
-        "_id": "2",
+        "_id": 2,
         "Benutzername": "JannisM",
         "Vorname": "Jannis",
         "Nachname": "Meyer", 
@@ -16,7 +16,7 @@ export const Users = [
         "Rolle": "Admin"
     },
     {
-        "_id": "3",
+        "_id": 3,
         "Benutzername": "JustusJonas",
         "Vorname": "Justus",
         "Nachname": "Jonas", 
@@ -24,7 +24,7 @@ export const Users = [
         "Rolle": "Ermittler"
     },
     {
-        "_id": "4",
+        "_id": 4,
         "Benutzername": "MaxMuster",
         "Vorname": "Max",
         "Nachname": "Muster", 
@@ -32,7 +32,7 @@ export const Users = [
         "Rolle": "Sachbearbeiter"
     },
     {
-        "_id": "5",
+        "_id": 5,
         "Benutzername": "Lisa87",
         "Vorname": "Lisa",
         "Nachname": "Schmidt",
@@ -42,68 +42,96 @@ export const Users = [
 ]
 
 const Faelle = [
-    
+    /* BeispielFall für Postman body:
+    {
+    "Tatvorwurf": "Mord",
+    "Erfasser": {
+        "Erfasser_ID": 1,
+        "ErfasserName": "Hofmann"
+    },
+    "Opfer": {
+        "VNameOpfer": "Max",
+        "NNameOpfer": "Mustermann",
+        "AWN_Opfer": "123456789",
+        "AdresseOpfer": "Musterstraße 123",
+        "TelNumOpfer": "0123456789"
+    },
+    "Taeter":{
+      "VNameTaeter": "Klaus",
+      "NNameTaeter": "Schmidt",
+      "AWN_Taeter": "987654321",
+      "Tatort": "Hauptstraße 4",
+      "Tatzeit": "2024-03-21T12:00:00",
+      "Tatwaffe": "Messer"
+    },
+    "Ort": {
+        "Bundesland": "Baden-Württemberg",
+        "Landkreis": "Ostalbkreis",
+        "Ort": "Aalen"
+    }
+}
+    */
 ]
 
 export const Straftaten = [
     {
-        "_id": "1",
+        "_id": 1,
         "Name": "Mord"
     },
     {
-        "_id": "2",
+        "_id": 2,
         "Name": "Diebstahl"
     },
     {
-        "_id": "3",
+        "_id": 3,
         "Name": "Hass und Hetze im Internet"
     },
     {
-        "_id": "4",
+        "_id": 4,
         "Name": "Körperverletzung"
     },
     {
-        "_id": "5",
+        "_id": 5,
         "Name": "Beleidigung"
     },
     {
-        "_id": "6",
+        "_id": 6,
         "Name": "Sachbeschädigung"
     },
     {
-        "_id": "7",
+        "_id": 7,
         "Name": "Widerstand gegen Vollstreckungsbeamte"
     },
     {
-        "_id": "8",
+        "_id": 8,
         "Name": "Unerlaubtes Entfernen vom Unfallort"
     },
     {
-        "_id": "9",
+        "_id": 9,
         "Name": "Vortäuschen einer Straftat"
     },
     {
-        "_id": "10",
+        "_id": 10,
         "Name": "Menschenhandel"
     },
     {
-        "_id": "11",
+        "_id": 11,
         "Name": "Geldwäsche"
     },
     {
-        "_id": "12",
+        "_id": 12,
         "Name": "Computerbetrug"
     },
     {
-        "_id": "13",
+        "_id": 13,
         "Name": "Urkundenfälschung"
     },
     {
-        "_id": "14",
+        "_id": 14,
         "Name": "Brandstiftung"
     },
     {
-        "_id": "15",
+        "_id": 15,
         "Name": "Bestechung"
     }
 ]
