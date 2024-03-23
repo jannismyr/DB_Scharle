@@ -69,14 +69,12 @@ function newAktenzeichen(Bundesland) {
     return Aktenzeichen
 }
 
-
 router.route('/')
 .get(async (req,res) => {
     const cases = await db.collection('Case').find({}).toArray();
     res.json(cases)
 })
 .post(async (req,res) => {
-
     const {Tatvorwurf} = req.body
     const {Erfasser_ID, ErfasserName} = req.body.Erfasser
     const {VNameOpfer, NNameOpfer, AWN_Opfer, AdresseOpfer,TelNumOpfer} = req.body.Opfer
@@ -84,7 +82,6 @@ router.route('/')
     const {Bundesland, Landkreis, Ort, Tatort} = req.body.Ort
 
     let Aktenzeichen = newAktenzeichen(Bundesland)
-
     if (Aktenzeichen !== "Fehler") {
 
         await db.collection('Case').insertOne({
@@ -214,7 +211,6 @@ router.route('/:Aktenzeichen')
 router.post('/:Aktenzeichen/Beweise', async (req,res) => {
     try {
         const CaseId = req.params.Aktenzeichen;
-        const searchedCase = await db.collection('Case').findOne({ _id: CaseId });
         const query = req.query.Art
         
         switch (query) {
