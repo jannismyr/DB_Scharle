@@ -76,7 +76,6 @@ label {
 }
 
 /* Stil für Texteingabefelder und Textarea */
-input[type="text"],
 input[type="date"],
 textarea {
   width: 100%;
