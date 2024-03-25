@@ -8,6 +8,7 @@ import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
 import LogIn from './seiten/LogIn.vue';
 import TestTabs from './seiten/TestTabs.vue';
+import DatenEingabe from './components/AnzeigeErstellen/TatartspezifischeComps/DatenEingabe.vue'
 
 import vuex from './vuex/index.js'
 
@@ -20,7 +21,13 @@ createApp(App)
         component: StartSeite },
 
         { path: '/neue_anzeige', 
-        component: NeueAnzeige },
+        component: NeueAnzeige,
+        children: [
+            {
+                path:':Tat',
+                component: DatenEingabe
+            }
+        ] },
 
         { path: '/detailansicht', 
         component: DetailAnsicht },

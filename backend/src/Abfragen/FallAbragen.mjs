@@ -75,10 +75,11 @@ router.route('/')
     res.json(cases)
 })
 .post(async (req,res) => {
-    const {Tatvorwurf} = req.body
+
+    const {Tatvorwurf,Tatzeit} = req.body
     const {Erfasser_ID, ErfasserName} = req.body.Erfasser
     const {VNameOpfer, NNameOpfer, AWN_Opfer, AdresseOpfer,TelNumOpfer} = req.body.Opfer
-    const {VNameTaeter, NNameTaeter, AWN_Taeter,Tatzeit} = req.body.Taeter
+    const {VNameTaeter, NNameTaeter, AWN_Taeter} = req.body.Taeter
     const {Bundesland, Landkreis, Ort, Tatort} = req.body.Ort
 
     let Aktenzeichen = newAktenzeichen(Bundesland)
@@ -124,6 +125,7 @@ router.route('/')
             VerknuepfteFaelle:[]
         })
         .then(
+            console.log('Fall hinzugefügt'),
             res.status(201).send('Fall hinzugefügt')
         )
 

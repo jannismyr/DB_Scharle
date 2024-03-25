@@ -48,7 +48,7 @@ import addBeschreibung from '@/comp_Fallansicht/addBeschreibung.vue';
 import addAdresse from '@/comp_Fallansicht/addAdresse.vue';
 import addPersoenlicheDaten from '@/comp_Fallansicht/addPersoenlicheDaten.vue';
 import addBilder from '@/comp_Fallansicht/addBilder.vue';
-import addFallName from '@/comp_Fallansicht/addFallName.vue';
+import addFallName from '@/comp_Fallansicht/addFallname.vue';
 import addKennzeichen from '@/comp_Fallansicht/addKennzeichen.vue';
 import addTatort from '@/comp_Fallansicht/addTatort.vue';
 import addVerdaechtige from '@/comp_Fallansicht/addVerdaechtige.vue';
