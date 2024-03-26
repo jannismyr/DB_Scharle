@@ -7,7 +7,7 @@ import NeueAnzeige from './seiten/NeueAnzeige.vue';
 import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
 import LogIn from './seiten/LogIn.vue';
-import TestTabs from './seiten/TestTabs.vue';
+import TestAll from './seiten/TestAll.vue';
 import DatenEingabe from './components/AnzeigeErstellen/TatartspezifischeComps/DatenEingabe.vue'
 
 import vuex from './vuex/index.js'
@@ -39,7 +39,7 @@ createApp(App)
         component: LogIn },
         
         { path: '/test', 
-        component: TestTabs },
+        component: TestAll },
 
     ]
 }))
