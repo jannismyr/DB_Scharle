@@ -44,6 +44,7 @@ export const Users = [
 const Faelle = [
     /* BeispielFall für Postman body:
     {
+    "Tatzeit": "2024-03-21T12:00:00",
     "Tatvorwurf": "Mord",
     "Erfasser": {
         "Erfasser_ID": 1,
@@ -60,11 +61,9 @@ const Faelle = [
       "VNameTaeter": "Klaus",
       "NNameTaeter": "Schmidt",
       "AWN_Taeter": "987654321",
-      "Tatort": "Hauptstraße 4",
-      "Tatzeit": "2024-03-21T12:00:00",
-      "Tatwaffe": "Messer"
     },
     "Ort": {
+        "Tatort": "Hauptstraße 4",
         "Bundesland": "Baden-Württemberg",
         "Landkreis": "Ostalbkreis",
         "Ort": "Aalen"
