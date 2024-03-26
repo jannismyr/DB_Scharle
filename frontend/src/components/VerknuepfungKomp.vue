@@ -2,7 +2,6 @@
  <div class="container">
     <div class="box">
        <!-- Anzeige der Details der Anzeige -->
-      <RouterLink class="Router" :to="`/detailansicht/${Aktenzeichen}`"><div>
           <h1>Aktenzeichen: {{ Aktenzeichen }}</h1>
           <h3>Tatvorwurf: {{ Tat }}</h3>
           <h4>Datum: {{ new Date(Datum).toLocaleDateString() + " " +new Date(Datum).toLocaleTimeString()}}</h4>
@@ -10,9 +9,6 @@
           <h4>Täter: {{ VNameTaeter + " "+ NNameTaeter }}</h4>
           <h4>Bundesland: {{ Bundesland }}</h4>
       </div>
-    </RouterLink>
-    </div>
-
   </div>
 </template>
 

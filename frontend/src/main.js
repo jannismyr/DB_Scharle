@@ -2,12 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './main.css';
 import * as VueRouter from 'vue-router';
+
 import StartSeite from './seiten/StartSeite.vue';
 import NeueAnzeige from './seiten/NeueAnzeige.vue';
 import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
+import FaelleVerknuepfen from './seiten/FaelleVerknuepfen.vue'
 import LogIn from './seiten/LogIn.vue';
 import TestAll from './seiten/TestAll.vue';
+
 import DatenEingabe from './components/AnzeigeErstellen/TatartspezifischeComps/DatenEingabe.vue'
 
 import vuex from './vuex/index.js'
@@ -15,7 +18,7 @@ import vuex from './vuex/index.js'
 
 createApp(App)
 .use(VueRouter.createRouter({
-    history: VueRouter.createWebHistory(process.env.BASE_URL),
+    history: VueRouter.createWebHashHistory(process.env.BASE_URL),
     routes: [
         { path: '/startseite', 
         component: StartSeite },
@@ -29,11 +32,14 @@ createApp(App)
             }
         ] },
 
-        { path: '/detailansicht', 
+        { path: '/detailansicht/:Aktenzeichen', 
         component: DetailAnsicht },
 
-        { path: '/bearbeiten', 
+        { path: '/bearbeiten/:Aktenzeichen', 
         component: AnzeigeBearbeiten },
+
+        { path: '/verknuepfen/:Aktenzeichen', 
+        component: FaelleVerknuepfen },
 
         { path: '/login', 
         component: LogIn },
