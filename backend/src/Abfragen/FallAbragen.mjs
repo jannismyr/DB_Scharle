@@ -94,16 +94,16 @@ router.route('/')
                 ErfasserName: ErfasserName
             },
             Opfer: {
-                VNameOpfer: VNameOpfer,
-                NNameOpfer: NNameOpfer,
-                AWN_Opfer: AWN_Opfer,
-                AdresseOpfer: AdresseOpfer,
-                TelNumOpfer: TelNumOpfer
+                Vorname: VNameOpfer,
+                Nachname: NNameOpfer,
+                Ausweisnummer: AWN_Opfer,
+                Adresse: AdresseOpfer,
+                Telefonnummer: TelNumOpfer
             },
             Taeter:{
-              VNameTaeter: VNameTaeter,
-              NNameTaeter: NNameTaeter,
-              AWN_Taeter: AWN_Taeter
+              Vorname: VNameTaeter,
+              Nachname: NNameTaeter,
+              Ausweisnummer: AWN_Taeter
             },
             Ort: {
                 Bundesland: Bundesland,
@@ -137,9 +137,6 @@ router.route('/')
 router.get('/Suche', async (req,res) => {
     try {
         const {Suche} = req.query
-
-        console.log("Suche aktiviert")
-
         const searchedCase = await db.collection('Case').find({
             $or: [
                 {_id: {$regex: Suche, $options: 'i'}},
