@@ -30,7 +30,9 @@ export default {
                 benutzername: this.username,
                 passwort: this.password
             })
-
+            .then(
+                window.location.replace('/')
+            )
             .catch(error => {
                 alert(error)
                 });
