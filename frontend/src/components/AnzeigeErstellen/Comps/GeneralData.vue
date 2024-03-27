@@ -16,11 +16,15 @@ export default {
     data(){
         return {
             General:{
-                Tat: null,
-                Tatzeit: null,
+                Tat: this.Tat,
+                Tatzeit: this.Tatzeit,
             },
             Taten: null
         }
+    },
+    props:{
+        Tat:String,
+        Tatzeit:Date
     },
     async created(){
         await axios.get('/crime')

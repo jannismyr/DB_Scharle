@@ -11,13 +11,20 @@ export default {
     data(){
         return {
             Opfer:{
-                Vorname: null,
-                Nachname: null,
-                Adresse: null,
-                Ausweisnummer: null,
-                Telefonnummer: null
+                Vorname: this.Vorname,
+                Nachname: this.Nachname,
+                Adresse: this.Adresse,
+                Ausweisnummer: this.Ausweisnummer,
+                Telefonnummer: this.Telefonnummer
             }
         }
+    },
+    props:{
+        Vorname: String,
+        Nachname: String,
+        Adresse: String,
+        Ausweisnummer: String,
+        Telefonnummer: String
     }
 }
 </script>

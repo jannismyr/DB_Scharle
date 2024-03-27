@@ -52,6 +52,7 @@
 <style scoped>
 .Router{
   color: rgb(53, 53, 53);
+  text-decoration: none;
 }
 .container {
   display: flex;

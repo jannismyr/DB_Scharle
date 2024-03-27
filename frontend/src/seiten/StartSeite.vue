@@ -3,7 +3,6 @@
        <div>
         <Suchleiste @Suche-Fall="Fallsuche"/>
         <br><br><br><br>
-        {{ AlleVeranstaltungen }}
         <div class="Grid" v-if="AlleVeranstaltungen">
           <AnzeigeKomp v-for="(option,index) in AlleVeranstaltungen" :key="index"
             :Aktenzeichen="option._id"

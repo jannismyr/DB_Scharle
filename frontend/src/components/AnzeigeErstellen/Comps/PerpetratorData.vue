@@ -9,11 +9,16 @@ export default {
     data(){
         return {
             Taeter:{
-                Vorname: null,
-                Nachname: null,
-                Ausweisnummer: null,
+                Vorname: this.Vorname,
+                Nachname: this.Nachname,
+                Ausweisnummer: this.Ausweisnummer,
             }
         }
+    },
+    props:{
+        Vorname: String,
+        Nachname: String,
+        Ausweisnummer: String,
     }
 }
 </script>

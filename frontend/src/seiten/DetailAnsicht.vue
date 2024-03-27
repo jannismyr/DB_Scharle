@@ -1,8 +1,6 @@
 <template>
-    <div>
     <div v-if="Fall">
-        <DetailKomp :key="Fall._id"
-            :Aktenzeichen="Fall._id"
+        <DetailKomp :Aktenzeichen="Fall._id"
             :Tat="Fall.Tatvorwurf"
             :Datum="Fall.Tatzeit"
             :VNameOpfer="Fall.Opfer.Vorname"
@@ -10,10 +8,7 @@
             :VNameTaeter="Fall.Taeter.Vorname"
             :NNameTaeter="Fall.Taeter.Nachname"
             :Bundesland="Fall.Ort.Bundesland"
-            :VerknFaelle="Fall.VerknuepfteFaelle"
-        />
-    </div>
-    
+            :VerknFaelle="Fall.VerknuepfteFaelle"/>
     </div>
 </template>
 
@@ -30,7 +25,7 @@ export default {
     data() {
         return {
             Aktenzeichen: this.$route.params.Aktenzeichen,
-            Fall:{}
+            Fall: null
         };
     },
     async created(){

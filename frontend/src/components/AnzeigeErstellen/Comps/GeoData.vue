@@ -10,12 +10,18 @@ export default {
     data(){
         return {
             Geo:{
-                Tatort: null,
-                Bundesland: null,
-                Landkreis: null,
-                Ort: null,
+                Tatort: this.Tatort,
+                Bundesland: this.Bundesland,
+                Landkreis: this.Landkreis,
+                Ort: this.Ort,
             }
         }
+    },
+    props:{
+        Tatort: String,
+        Bundesland: String,
+        Landkreis: String,
+        Ort:String
     }
 }
 </script>
