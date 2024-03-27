@@ -6,7 +6,11 @@ import UserQueries from './Abfragen/UserAbfragen.mjs'
 import CaseQueries from './Abfragen/FallAbragen.mjs'
 import CrimeQueries from './Abfragen/TatenAbfragen.mjs'
 import { Users, Straftaten } from './data.mjs';
+import fs from 'fs'
 
+let auditLog = fs.createWriteStream('./audit.txt', {
+    flags: 'a'
+})
 
 const corsOptions = {
     origin: '*',

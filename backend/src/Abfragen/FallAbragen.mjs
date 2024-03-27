@@ -1,9 +1,13 @@
 import { client } from '../db.mjs'
 import express from 'express';
+import fs from 'fs'
 
 const router = express.Router()
 const db = client.db('Test_Jannis');
 
+let auditLog = fs.createWriteStream('./audit.txt', {
+    flags: 'a'
+})
 
 function newAktenzeichen(Bundesland) {
     
@@ -208,6 +212,9 @@ router.route('/:Aktenzeichen')
 })
 .patch(async (req,res) =>{
     try {
+        const {Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const body = req.body.Update
         const CaseId = req.params.Aktenzeichen;
         const searchedCase = await db.collection('Case').findOne({ _id: CaseId });
@@ -215,11 +222,10 @@ router.route('/:Aktenzeichen')
             if (Object.hasOwnProperty.call(searchedCase, key)) {
                 await db.collection('Case').updateOne({_id: CaseId}, {$set:{ [key]: body[key]}})
 
-                /*auditLog.write("Die Veranstaltung "+GesuchteVeranstaltung['Titel']+ " wurde am "
-                +Datum.toLocaleDateString()+" um "+ Datum.getHours()+":" +Datum.getMinutes()+ " aktualisiert. \n"+ 
-                "--> Das Attribut "+ key+ " wurde von " + alteDaten+ " zu "+ GesuchteVeranstaltung[key]+ " geändert \n")*/
+                auditLog.write(AktuellesDatum +": Der Fall "+ CaseId+ " wurde and der Stelle "+ key + " von "+ Erfasser+ " geändert")
             }
         }
+        
         res.status(200).send('Fall bearbeitet')
     } catch (error) {
         console.log(error.message)
@@ -228,11 +234,14 @@ router.route('/:Aktenzeichen')
 })
 .delete(async (req,res) => {
     try {
-        const Rolle = req.body.rolle
+        const {Rolle,Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const CaseId = req.params.Aktenzeichen;
     
         if (Rolle === "Admin") {
             await db.collection('Case').deleteOne({_id: CaseId})
+            auditLog.write(AktuellesDatum +": Der Fall "+ CaseId+ " wurde von "+ Erfasser+ " gelöscht")
             res.status(200).send("Fall gelöscht");
         } else {
             res.status(403).send("Nicht für diese Aktion authorisiert");
@@ -247,7 +256,9 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
     try {
         const CaseId = req.params.Aktenzeichen;
         const query = req.query.Art
-        
+        const {Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         switch (query) {
             case "Gegenstand":
                 const {GArt, SRN, Marke, GRelevanz} = req.body
@@ -257,6 +268,7 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
                     Marke: Marke,
                     Relevanz: GRelevanz
                 }}}).then(
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neuer Gegenstand der Art "+ GArt+ " hinzugefügt"),
                     res.status(201).send("Gegenstand zu Fall hinzugefügt")
                 )
                 break;
@@ -266,6 +278,7 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
                     Bez: Bez,
                     kurzbeschreibung: kurzbeschreibung,
                 }}}).then(
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neues Bild namens "+ Bez+ " hinzugefügt"),
                     res.status(201).send("Bild zu Fall hinzugefügt")
                 )
     
@@ -278,6 +291,7 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
                     Aussage: Aussage,
                     Relevanz: ZRelevanz
                 }}}).then(
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " eine neue Zeugenaussage von "+ VName + " "+ NName+ " hinzugefügt"),
                     res.status(201).send("Zeuge zu Fall hinzugefügt")
                 )
                 break;
@@ -294,7 +308,9 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
 
 router.post('/:Aktenzeichen/Verknuepfen', async (req,res) => {
     try {
-        const {AKTZ, Begruendung} = req.body
+        const {AKTZ, Begruendung, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const CaseId = req.params.Aktenzeichen;
 
         await db.collection('Case').updateOne({_id: CaseId}, {$push:{VerknuepfteFaelle: {
@@ -307,6 +323,7 @@ router.post('/:Aktenzeichen/Verknuepfen', async (req,res) => {
                 Begruendung: Begruendung,
             }}})
             .then(
+                auditLog.write(AktuellesDatum +": Die Fälle "+ CaseId+ " und "+ AKTZ+ "wurden von "+ Erfasser+ " Verknüpft aufgrund von "+Begruendung +" hinzugefügt"),
                 res.status(200).send("Fälle verknüpft")
             )
         )

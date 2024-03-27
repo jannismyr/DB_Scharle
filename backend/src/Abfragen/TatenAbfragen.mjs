@@ -1,10 +1,13 @@
 import { client } from '../db.mjs'
 import express from 'express';
+import fs from 'fs'
 
 const router = express.Router()
 const db = client.db('Test_Jannis');
 
-
+let auditLog = fs.createWriteStream('./audit.txt', {
+    flags: 'a'
+})
 
 router.route('/')
 .get(async (req,res) => {
@@ -17,7 +20,8 @@ router.route('/')
 })
 .post(async (req,res) => {
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
         
         if (Rolle === "Admin") {
             const Tat = await db.collection('Crime').find().sort({ _id: -1 }).limit(1).toArray();
@@ -28,6 +32,7 @@ router.route('/')
                 Name: Name
             })
             .then(
+                auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ Name+ " von "+ Erfasser+ " hinzugefügt "),
                 res.status(201).send('Tatbestand hinzugefügt')
             )
         } else {
@@ -42,7 +47,9 @@ router.route('/')
 router.route('/:Id')
 .patch(async (req,res) => {
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         if (Rolle === "Admin") {
 
         const {Name} = req.body.Update
@@ -50,9 +57,7 @@ router.route('/:Id')
         
         await db.collection('Crime').updateOne({_id: CrimeId}, {$set:{ Name: Name}})
 
-                /*auditLog.write("Die Veranstaltung "+GesuchteVeranstaltung['Titel']+ " wurde am "
-                +Datum.toLocaleDateString()+" um "+ Datum.getHours()+":" +Datum.getMinutes()+ " aktualisiert. \n"+ 
-                "--> Das Attribut "+ key+ " wurde von " + alteDaten+ " zu "+ GesuchteVeranstaltung[key]+ " geändert \n")*/
+        auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " geändert "),
 
         res.status(200).send('Tatbestand bearbeitet')
         } else {
@@ -65,11 +70,14 @@ router.route('/:Id')
 
 .delete(async (req,res) => {
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const CrimeId = parseInt(req.params.Id);
     
         if (Rolle === "Admin") {
             await db.collection('Crime').deleteOne({_id: CrimeId})
+            auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " gelöscht "),
             res.status(200).send("Tatbestand gelöscht");
             
         } else {

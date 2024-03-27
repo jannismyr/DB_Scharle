@@ -3,11 +3,16 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import fs from 'fs'
 
 dotenv.config();
 
 const router = express.Router()
 const db = client.db('Test_Jannis');
+
+let auditLog = fs.createWriteStream('./audit.txt', {
+    flags: 'a'
+})
 
 function generateAccessToken(nutzername) {
     return jwt.sign({ nutzername }, process.env.TOKEN_SECRET, { expiresIn: '1h' });
@@ -33,7 +38,9 @@ router.route('/')
 .post(async (req,res) => {
 
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const {Id, benutzername, vorname, nachname, passwort, rolle} = req.body
 
         if (Rolle === "Admin"){
@@ -49,6 +56,7 @@ router.route('/')
                 Rolle: rolle
             })
             .then(
+                auditLog.write(AktuellesDatum + " Es wurde der Benutzer "+ Id+" "+ benutzername + " von "+ Erfasser + " hinzugefügt \n" ),
                 res.status(201).send('User hinzugefügt')
             )
         }
@@ -61,10 +69,15 @@ router.route('/')
 })
 .delete(async (req,res) => {
     try {
-    const Rolle = req.body.rolle
+    
+    const {Rolle, Erfasser} = req.body
+
+    let AktuellesDatum = new Date()
 
     if (Rolle === "Admin") {
         await db.collection('User').deleteMany({})
+
+        auditLog.write(AktuellesDatum + " Es wurden alle Benutzer von "+ Erfasser + " gelöscht \n" )
         res.status(200).send("Alle Nutzer gelöscht");
         
     } else {
@@ -120,7 +133,9 @@ router.route('/:Id')
 })
 .patch(async (req,res) =>{
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         if (Rolle === "Admin") {
             const body = req.body.Update
             const userId = parseInt(req.params.Id);
@@ -130,11 +145,9 @@ router.route('/:Id')
                 if (Object.hasOwnProperty.call(user, key)) {
                     await db.collection('User').updateOne({_id: userId}, {$set:{ [key]: body[key]}})
     
-                    /*auditLog.write("Die Veranstaltung "+GesuchteVeranstaltung['Titel']+ " wurde am "
-                    +Datum.toLocaleDateString()+" um "+ Datum.getHours()+":" +Datum.getMinutes()+ " aktualisiert. \n"+ 
-                    "--> Das Attribut "+ key+ " wurde von " + alteDaten+ " zu "+ GesuchteVeranstaltung[key]+ " geändert \n")*/
                 }
             }
+            auditLog.write(AktuellesDatum + " Es wurden der Benutzer "+ userId+" "+ user.Benutzername + " von "+ Erfasser + " geändert \n" )
             res.status(200).send('Nutzer bearbeitet')
 
         } else {
@@ -147,11 +160,14 @@ router.route('/:Id')
 .delete(async (req,res) => {
 
     try {
-        const Rolle = req.body.rolle
+        const {Rolle, Erfasser} = req.body
+        let AktuellesDatum = new Date()
+
         const userId = req.params.Id;
     
         if (Rolle === "Admin") {
             await db.collection('User').deleteOne({_id: userId})
+            auditLog.write(AktuellesDatum + ": Es wurden der Benutzer "+ userId +" von "+ Erfasser + " gelöscht \n" )
             res.status(200).send("Nutzer gelöscht");
             
         } else {
