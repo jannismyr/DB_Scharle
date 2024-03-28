@@ -95,7 +95,7 @@ export default {
         }).then(alert("Formular abgesendet"),
         document.Anzeigenerfassung.reset(),
 
-        window.location.replace(`/#/Startseite`))
+        window.location.replace(`/Startseite`))
       } else {
         alert("Eine Seite nicht ausgefüllt")
       }

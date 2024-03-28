@@ -51,13 +51,19 @@ export default {
       // Hier können Sie Code ausführen, der nach dem Rendern der Seite ausgeführt werden soll
   },
   created(){
-  /*  if (!sessionStorage.getItem('Nutzer'))
+    if (!sessionStorage.getItem('Nutzer'))
     {
       window.location.replace('/login')
     }
-  }*/
-},
-}
+    else{
+      axios.get('/case')
+      .then(result => {
+        this.AlleVeranstaltungen = result.data
+      })
+    }
+  }
+};
+
 </script>
 
 <style scoped>

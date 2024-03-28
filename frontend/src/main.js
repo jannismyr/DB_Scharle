@@ -9,8 +9,6 @@ import DetailAnsicht from './seiten/DetailAnsicht.vue';
 import AnzeigeBearbeiten from './seiten/AnzeigeBearbeiten.vue';
 import FaelleVerknuepfen from './seiten/FaelleVerknuepfen.vue'
 import LogIn from './seiten/LogIn.vue';
-import TestAll from './seiten/TestAll.vue';
-
 import DatenEingabe from './components/AnzeigeErstellen/Beweismittel/DatenEingabe.vue'
 
 import vuex from './vuex/index.js'
@@ -18,7 +16,7 @@ import vuex from './vuex/index.js'
 
 createApp(App)
 .use(VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(process.env.BASE_URL),
+    history: VueRouter.createWebHistory(process.env.BASE_URL),
     routes: [
         { path: '/startseite', 
         component: StartSeite },
@@ -40,9 +38,6 @@ createApp(App)
 
         { path: '/login', 
         component: LogIn },
-        
-        { path: '/test', 
-        component: TestAll },
 
     ]
 }))
