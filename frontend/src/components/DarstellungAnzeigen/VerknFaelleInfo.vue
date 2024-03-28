@@ -9,7 +9,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   export default {
     name: "AnzeigeKomp",
     props:{
@@ -22,15 +21,7 @@
         }
     },
     methods: {
-    async deleteVeranstaltung() {
-      try {
-        // `veranstaltungId` wird als Prop übergeben
-        await axios.delete(`/api/veranstaltungen/${this.veranstaltungId}`);
-        window.location.reload();        
-      } catch (error) {
-        console.error("Fehler beim Löschen der Veranstaltung", error);
-      }
-    },
+    
     }
   };
 </script>

@@ -11,7 +11,7 @@ import FaelleVerknuepfen from './seiten/FaelleVerknuepfen.vue'
 import LogIn from './seiten/LogIn.vue';
 import TestAll from './seiten/TestAll.vue';
 
-import DatenEingabe from './components/AnzeigeErstellen/TatartspezifischeComps/DatenEingabe.vue'
+import DatenEingabe from './components/AnzeigeErstellen/Beweismittel/DatenEingabe.vue'
 
 import vuex from './vuex/index.js'
 
@@ -24,13 +24,7 @@ createApp(App)
         component: StartSeite },
 
         { path: '/neue_anzeige', 
-        component: NeueAnzeige,
-        children: [
-            {
-                path:':Tat',
-                component: DatenEingabe
-            }
-        ] },
+        component: NeueAnzeige },
 
         { path: '/detailansicht/:Aktenzeichen', 
         component: DetailAnsicht },
@@ -40,6 +34,9 @@ createApp(App)
 
         { path: '/verknuepfen/:Aktenzeichen', 
         component: FaelleVerknuepfen },
+
+        { path: '/beweise/:Aktenzeichen', 
+        component: DatenEingabe },
 
         { path: '/login', 
         component: LogIn },

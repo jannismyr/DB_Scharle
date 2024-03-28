@@ -8,7 +8,8 @@
         :VNameTaeter="Fall.Taeter.Vorname"
         :NNameTaeter="Fall.Taeter.Nachname"
         :Bundesland="Fall.Ort.Bundesland"
-        :VerknFaelle="Fall.VerknuepfteFaelle"/>
+        :VerknFaelle="Fall.VerknuepfteFaelle"
+        :Beweise="Fall.Beweise"/>
     </div>
 </template>
 

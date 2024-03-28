@@ -223,7 +223,7 @@ router.route('/:Aktenzeichen')
             if (Object.hasOwnProperty.call(searchedCase, key)) {
                 await db.collection('Case').updateOne({_id: CaseId}, {$set:{ [key]: body[key]}})
 
-                auditLog.write(AktuellesDatum +": Der Fall "+ CaseId+ " wurde and der Stelle "+ key + " von "+ Erfasser+ " geändert")
+                auditLog.write(AktuellesDatum +": Der Fall "+ CaseId+ " wurde and der Stelle "+ key + " von "+ Erfasser+ " geändert \n")
             }
         }
         
@@ -269,30 +269,31 @@ router.post('/:Aktenzeichen/Beweise', async (req,res) => {
                     Marke: Marke,
                     Relevanz: GRelevanz
                 }}}).then(
-                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neuer Gegenstand der Art "+ GArt+ " hinzugefügt"),
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neuer Gegenstand der Art "+ GArt+ " hinzugefügt \n"),
                     res.status(201).send("Gegenstand zu Fall hinzugefügt")
                 )
                 break;
             case "Bild":
                 const {Bez, kurzbeschreibung} = req.body
+                console.log(Bez)
                 await db.collection('Case').updateOne({_id: CaseId}, {$push:{'Beweise.0.Bilder': {
                     Bez: Bez,
                     kurzbeschreibung: kurzbeschreibung,
                 }}}).then(
-                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neues Bild namens "+ Bez+ " hinzugefügt"),
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " ein neues Bild namens "+ Bez+ " hinzugefügt \n"),
                     res.status(201).send("Bild zu Fall hinzugefügt")
                 )
     
                 break;
             case "Zeuge":
                 const {VName, NName, Aussage, ZRelevanz} = req.body
-                await db.collection('Case').updateOne({_id: CaseId}, {$push:{'Beweise.0.Zeugenaussagen': {
+                await db.collection('Case').updateOne({_id: CaseId}, {$push:{'Beweise.0.Zeugen': {
                     VName: VName,
                     NName: NName,
                     Aussage: Aussage,
                     Relevanz: ZRelevanz
                 }}}).then(
-                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " eine neue Zeugenaussage von "+ VName + " "+ NName+ " hinzugefügt"),
+                    auditLog.write(AktuellesDatum +": Zum Fall "+ CaseId+ " wurde von "+ Erfasser+ " eine neue Zeugenaussage von "+ VName + " "+ NName+ " hinzugefügt \n"),
                     res.status(201).send("Zeuge zu Fall hinzugefügt")
                 )
                 break;
@@ -324,7 +325,7 @@ router.post('/:Aktenzeichen/Verknuepfen', async (req,res) => {
                 Begruendung: Begruendung,
             }}})
             .then(
-                auditLog.write(AktuellesDatum +": Die Fälle "+ CaseId+ " und "+ AKTZ+ "wurden von "+ Erfasser+ " Verknüpft aufgrund von "+Begruendung +" hinzugefügt"),
+                auditLog.write(AktuellesDatum +": Die Fälle "+ CaseId+ " und "+ AKTZ+ "wurden von "+ Erfasser+ " Verknüpft aufgrund von "+Begruendung +" hinzugefügt \n"),
                 res.status(200).send("Fälle verknüpft")
             )
         )

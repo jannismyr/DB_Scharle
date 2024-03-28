@@ -8,7 +8,7 @@
           <template #Allgemein>
             <div>
               <GeneralData @General-Daten="GetGeneralData"
-              :Tat ="Fall.Tatvorwurf"
+              :Tat="Fall.Tatvorwurf"
               :Tatzeit="Fall.Tatzeit"/>
             </div>
           </template>
@@ -85,6 +85,7 @@ methods:{
 
   submitForm(){
       axios.patch(`/case/${this.Aktenzeichen}`, {
+        Erfasser: this.Erfasser,
         Update:{
         Tatvorwurf: this.General.Tat,
         Tatzeit: this.General.Tatzeit,
@@ -139,6 +140,7 @@ data() {
       Tatzeit: null,
       Tat: null
     },
+    Erfasser: sessionStorage.getItem('Nutzer').BName,
     Victim: null,
     Taeter: null,
     Geo: null,

@@ -32,7 +32,7 @@ router.route('/')
                 Name: Name
             })
             .then(
-                auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ Name+ " von "+ Erfasser+ " hinzugefügt "),
+                auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ Name+ " von "+ Erfasser+ " hinzugefügt \n"),
                 res.status(201).send('Tatbestand hinzugefügt')
             )
         } else {
@@ -57,7 +57,7 @@ router.route('/:Id')
         
         await db.collection('Crime').updateOne({_id: CrimeId}, {$set:{ Name: Name}})
 
-        auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " geändert "),
+        auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " geändert \n"),
 
         res.status(200).send('Tatbestand bearbeitet')
         } else {
@@ -77,7 +77,7 @@ router.route('/:Id')
     
         if (Rolle === "Admin") {
             await db.collection('Crime').deleteOne({_id: CrimeId})
-            auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " gelöscht "),
+            auditLog.write(AktuellesDatum +": Es wurde der Tatbestand "+ CrimeId+ " von "+ Erfasser+ " gelöscht \n"),
             res.status(200).send("Tatbestand gelöscht");
             
         } else {
