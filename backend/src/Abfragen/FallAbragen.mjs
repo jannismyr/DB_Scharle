@@ -216,6 +216,7 @@ router.route('/:Aktenzeichen')
         let AktuellesDatum = new Date()
 
         const body = req.body.Update
+
         const CaseId = req.params.Aktenzeichen;
         const searchedCase = await db.collection('Case').findOne({ _id: CaseId });
         for (const key in body) {

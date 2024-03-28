@@ -14,7 +14,6 @@
             :NNameTaeter="option.Taeter.Nachname"
             :Bundesland="option.Ort.Bundesland"
             />
-          
         </div>
        </div>
     </div>

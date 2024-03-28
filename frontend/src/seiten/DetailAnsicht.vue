@@ -1,14 +1,14 @@
 <template>
     <div v-if="Fall">
         <DetailKomp :Aktenzeichen="Fall._id"
-            :Tat="Fall.Tatvorwurf"
-            :Datum="Fall.Tatzeit"
-            :VNameOpfer="Fall.Opfer.Vorname"
-            :NNameOpfer="Fall.Opfer.Nachname"
-            :VNameTaeter="Fall.Taeter.Vorname"
-            :NNameTaeter="Fall.Taeter.Nachname"
-            :Bundesland="Fall.Ort.Bundesland"
-            :VerknFaelle="Fall.VerknuepfteFaelle"/>
+        :Tat="Fall.Tatvorwurf"
+        :Datum="Fall.Tatzeit"
+        :VNameOpfer="Fall.Opfer.Vorname"
+        :NNameOpfer="Fall.Opfer.Nachname"
+        :VNameTaeter="Fall.Taeter.Vorname"
+        :NNameTaeter="Fall.Taeter.Nachname"
+        :Bundesland="Fall.Ort.Bundesland"
+        :VerknFaelle="Fall.VerknuepfteFaelle"/>
     </div>
 </template>
 

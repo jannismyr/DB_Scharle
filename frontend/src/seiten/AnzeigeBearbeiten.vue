@@ -1,5 +1,6 @@
 <template>
   <div v-if="Fall">
+
   <div>
     <form name="Anzeigenerfassung" @submit.prevent="false">
       <div class="button-container">
@@ -83,21 +84,21 @@ methods:{
   },
 
   submitForm(){
-    if (this.General && this.Victim && this.Taeter && this.Geo) {
-      axios.patch('/case', {
+      axios.patch(`/case/${this.Aktenzeichen}`, {
+        Update:{
         Tatvorwurf: this.General.Tat,
         Tatzeit: this.General.Tatzeit,
         Opfer: {
-          VNameOpfer: this.Victim.Vorname,
-          NNameOpfer: this.Victim.Nachname,
-          AWN_Opfer: this.Victim.Auweisnummer,
-          AdresseOpfer: this.Victim.Adresse,
-          TelNumOpfer: this.Victim.Telefonnummer
+          Vorname: this.Victim.Vorname,
+          Nachname: this.Victim.Nachname,
+          Ausweisnummer: this.Victim.Ausweisnummer,
+          Adresse: this.Victim.Adresse,
+          Telefonnummer: this.Victim.Telefonnummer
         },
         Taeter: {
-          VNameTaeter: this.Taeter.Vorname,
-          NNameTaeter: this.Taeter.Nachname,
-          AWN_Taeter: this.Taeter.Ausweisnummer
+          Vorname: this.Taeter.Vorname,
+          Nachname: this.Taeter.Nachname,
+          Ausweisnummer: this.Taeter.Ausweisnummer
         },
         Ort:{
           Bundesland: this.Geo.Bundesland,
@@ -105,12 +106,9 @@ methods:{
           Ort: this.Geo.Ort, 
           Tatort: this.Geo.Tatort
         }
+      }
       }).then(alert("Fall aktualisiert"),)
-    } else {
-      alert("Eine Seite nicht ausgefüllt")
     }
-      
-  }
 },
 data() {
   return {
@@ -137,6 +135,13 @@ data() {
       },
       
     ],
+    General:{
+      Tatzeit: null,
+      Tat: null
+    },
+    Victim: null,
+    Taeter: null,
+    Geo: null,
     Fall: null,
     Aktenzeichen: this.$route.params.Aktenzeichen
   }
@@ -145,6 +150,13 @@ async created(){
   await axios.get(`/case/${this.Aktenzeichen}`)
     .then( res =>{
         this.Fall = res.data
+
+        this.General.Tatzeit = res.data.Tatzeit
+        this.General.Tat = res.data.Tatvorwurft
+
+        this.Taeter = res.data.Taeter
+        this.Victim = res.data.Opfer
+        this.Geo = res.data.Ort
     })
   },
 };

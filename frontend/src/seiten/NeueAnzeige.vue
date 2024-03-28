@@ -77,7 +77,7 @@ export default {
           Opfer: {
             VNameOpfer: this.Victim.Vorname,
             NNameOpfer: this.Victim.Nachname,
-            AWN_Opfer: this.Victim.Auweisnummer,
+            AWN_Opfer: this.Victim.Ausweisnummer,
             AdresseOpfer: this.Victim.Adresse,
             TelNumOpfer: this.Victim.Telefonnummer
           },
@@ -94,7 +94,8 @@ export default {
           }
         }).then(alert("Formular abgesendet"),
         document.Anzeigenerfassung.reset(),
-        window.location.replace(`/${this.General.Tat}`))
+
+        window.location.replace(`/#/${this.General.Tat}`))
       } else {
         alert("Eine Seite nicht ausgefüllt")
       }
