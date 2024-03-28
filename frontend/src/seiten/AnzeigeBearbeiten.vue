@@ -1,6 +1,5 @@
 <template>
   <div v-if="Fall">
-
   <div>
     <form name="Anzeigenerfassung" @submit.prevent="false">
       <div class="button-container">
@@ -140,7 +139,7 @@ data() {
       Tatzeit: null,
       Tat: null
     },
-    Erfasser: sessionStorage.getItem('Nutzer').BName,
+    Erfasser: JSON.parse(sessionStorage.getItem('Nutzer')).BName,
     Victim: null,
     Taeter: null,
     Geo: null,

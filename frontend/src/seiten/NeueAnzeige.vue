@@ -71,8 +71,8 @@ export default {
           Tatvorwurf: this.General.Tat,
           Tatzeit: this.General.Tatzeit,
           Erfasser: {
-            Erfasser_ID: sessionStorage.getItem('Nutzer').Id,
-            ErfasserName: sessionStorage.getItem('Nutzer').BName
+            Erfasser_ID: JSON.parse(sessionStorage.getItem('Nutzer')).Id,
+            ErfasserName: JSON.parse(sessionStorage.getItem('Nutzer')).BName
           },
           Opfer: {
             VNameOpfer: this.Victim.Vorname,

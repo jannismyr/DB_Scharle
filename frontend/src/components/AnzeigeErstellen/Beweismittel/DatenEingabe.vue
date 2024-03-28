@@ -85,14 +85,14 @@ export default {
             switch (Art) {
                 case "Bild":
                     axios.post(`/case/${this.Aktenzeichen}/Beweise?Art=${Art}`, {
-                        Erfasser: sessionStorage.getItem('Nutzer').BName,
+                        Erfasser: JSON.parse(sessionStorage.getItem('Nutzer')).BName,
                         Bez: this.Bild.Bez,
                         kurzbeschreibung: this.Bild.kurzbeschreibung
                     })
                     break;
                 case "Gegenstand":
                     axios.post(`/case/${this.Aktenzeichen}/Beweise?Art=${Art}`, {
-                        Erfasser: sessionStorage.getItem('Nutzer').BName,
+                        Erfasser: JSON.parse(sessionStorage.getItem('Nutzer')).BName,
                         GArt: this.Gegenstand.GegenstandsArt,
                         SRN:this.Gegenstand.Seriennummer,
                         Marke:this.Gegenstand.Marke,
@@ -101,7 +101,7 @@ export default {
                     break;
                 case "Zeuge":
                     axios.post(`/case/${this.Aktenzeichen}/Beweise?Art=${Art}`, {
-                        Erfasser: sessionStorage.getItem('Nutzer').BName,
+                        Erfasser: JSON.parse(sessionStorage.getItem('Nutzer')).BName,
                         VName: this.Zeuge.VName,
                         NName:this.Zeuge.NName,
                         Aussage:this.Zeuge.Aussage,

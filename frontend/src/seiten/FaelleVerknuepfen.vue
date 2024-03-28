@@ -57,6 +57,7 @@ export default {
 
           if (Grund !== null && Grund !== "") {
             axios.post(`/case/${this.Aktenzeichen1}/Verknuepfen`,{
+                Erfasser: JSON.parse(sessionStorage.getItem('Nutzer')).BName,
                 AKTZ: Aktenzeichen2,
                 Begruendung: Grund
             })
