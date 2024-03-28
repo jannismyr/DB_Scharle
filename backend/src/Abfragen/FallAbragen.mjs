@@ -148,12 +148,12 @@ router.get('/Suche', async (req,res) => {
                 {'Ort.Bundesland': {$regex: Suche, $options: 'i'}},
                 {'Ort.Ort': {$regex: Suche, $options: 'i'}},
                 {'Ort.Tatort': {$regex: Suche, $options: 'i'}},
-                {'Opfer.VNameOpfer':{$regex: Suche, $options: 'i'}},
-                {'Opfer.NNameOpfer': {$regex: Suche, $options: 'i'}},
-                {'Opfer.AWN_Opfer': {$regex: Suche, $options: 'i'}},
-                {'Taeter.VNameTaeter': {$regex: Suche, $options: 'i'}},
-                {'Taeter.NNameTaeter': {$regex: Suche, $options: 'i'}},
-                {'Taeter.AWN_Taeter': {$regex: Suche, $options: 'i'}},
+                {'Opfer.Vorname':{$regex: Suche, $options: 'i'}},
+                {'Opfer.Nachname': {$regex: Suche, $options: 'i'}},
+                {'Opfer.Ausweisnummer': {$regex: Suche, $options: 'i'}},
+                {'Taeter.Vorname': {$regex: Suche, $options: 'i'}},
+                {'Taeter.Nachname': {$regex: Suche, $options: 'i'}},
+                {'Taeter.Ausweisnummer': {$regex: Suche, $options: 'i'}},
             ] 
         }).toArray()
         res.status(200).send(searchedCase)
