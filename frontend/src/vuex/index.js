@@ -31,9 +31,12 @@ export default createStore({
     login({ commit },payload){
       axios.post('/users/login', payload)
       .then(res => {
-        commit('authUser', res)
         sessionStorage.setItem('Token', JSON.stringify(res.data.token))        
-        sessionStorage.setItem('Nutzer', JSON.stringify(res.data.Nutzer))        
+        sessionStorage.setItem('Nutzer', JSON.stringify(res.data.Nutzer)) 
+        commit('authUser', res)    
+      })
+      .catch(error => {
+        alert(error)
       })
     },
   },

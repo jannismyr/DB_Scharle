@@ -31,7 +31,10 @@ export default {
                 passwort: this.password
             })
             .then(
-                window.location.replace('/')
+                setTimeout(function(){
+                    window.location.replace('/')
+                }, 5000)
+                
             )
             .catch(error => {
                 alert(error)
