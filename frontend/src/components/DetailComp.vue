@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box">
       <!-- Anzeige der Details der Anzeige -->
-        <div>
+        <div class="Box">
           <h1>Aktenzeichen: {{ Aktenzeichen }}</h1>
           <h3>Tatvorwurf: {{ Tat }}</h3>
           <h4>Datum: {{ formattedDate }}</h4>
@@ -14,8 +14,8 @@
         <h1>Beweise</h1>
 
         <div class="Grid" v-if="Beweise">
-          <div v-if="Beweise[0].Gegenstaende">
-          <h1>Gegenstaende</h1>
+          <div v-if="Beweise[0].Gegenstaende" class="BeweisBox">
+          <h1>Gegenstände</h1>
           <ul v-for="(gegenstand,index) in Beweise[0].Gegenstaende" :key="index">
             <li>
               <h3>Art: {{ gegenstand.GegenstandsArt }}</h3>
@@ -25,7 +25,7 @@
             </li>
           </ul>
           </div>
-          <div v-if="Beweise[0].Bilder">
+          <div v-if="Beweise[0].Bilder" class="BeweisBox">
             <h1>Bild</h1>
             <ul v-for="(bild,index) in Beweise[0].Bilder" :key="index">
               <li>
@@ -34,7 +34,7 @@
               </li>
             </ul>
           </div>
-          <div v-if="Beweise[0].Zeugen">
+          <div v-if="Beweise[0].Zeugen" class="BeweisBox">
           <h1>Zeugen</h1>
             <ul v-for="(zeuge,index) in Beweise[0].Zeugen" :key="index">
               <li>
@@ -49,12 +49,14 @@
         </div>
 
         <br><br>
+
         <h1>Verknüpfte Fälle:</h1>
         <div class="Grid" v-if="VerknFaelle">
           <VerknFaelleInfo v-for="(Fall,index) in VerknFaelle" :key="index"
           :Aktenzeichen="Fall.Aktenzeichen"
           :Begruendung="Fall.Begruendung"/>
         </div>
+
         <div class="Buttons">
           <RouterLink class="Router" :to="`/bearbeiten/${Aktenzeichen}`"><button> Fall Ändern</button></RouterLink>
           <RouterLink class="Router" :to="`/verknuepfen/${Aktenzeichen}`"><button> Fall Verknüpfen</button></RouterLink>
@@ -94,23 +96,62 @@ export default {
 </script>
 
 <style scoped>
-.Grid{
+.Grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-}
-.Grid ul{
-  display: flex;
-  justify-content:center;
-}
-.Grid li{
-  margin-bottom: 3rem;
-  border: 1px solid rgb(148, 148, 148);
-}
-.Router{
-  margin: 1rem;
-}
-.Buttons button{
-  padding: 0.5rem;
+  gap: 20px; 
 }
 
+.Grid ul {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 0;
+}
+
+.Grid li {
+  margin: 10px 0; 
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 5px; 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+  padding: 10px;
+  width: 90%; 
+}
+
+.Router {
+  margin: 1rem;
+  text-decoration: none; 
+}
+
+.Buttons button {
+  padding: 0.5rem;
+  margin: 0.5rem; 
+  border: none; 
+  background-color: #333; 
+  color: white;
+  border-radius: 5px; 
+  cursor: pointer;
+}
+
+.Buttons button:hover {
+  background-color: #626161; 
+}
+
+.Box {
+  border: 1px solid #000; 
+  padding: 15px;
+  margin: 10px; 
+  background-color: #f9f9f9; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 5px; 
+}
+
+.BeweisBox {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
 </style>

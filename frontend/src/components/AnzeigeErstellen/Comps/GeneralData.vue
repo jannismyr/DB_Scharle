@@ -7,6 +7,7 @@
     </select>
     <input type="datetime-local" @keyup="$emit('GeneralDaten',General)" class="Eingabe" id="DateTime" v-model="General.Tatzeit" placeholder="Tatzeit" required >
 
+    <h4>Es müssen alle Felder ausgefüllt werden</h4>
 
 </template>
 

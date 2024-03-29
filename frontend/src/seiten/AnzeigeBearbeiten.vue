@@ -168,7 +168,7 @@ async created(){
 display: flex;
 justify-content: center;
 margin-top: 2rem;
-height: 55vh;
+height: 60vh;
 }
 .SubmitButton {
 margin-top: 3rem;

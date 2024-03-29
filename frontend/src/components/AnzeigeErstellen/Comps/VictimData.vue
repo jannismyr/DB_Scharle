@@ -4,6 +4,8 @@
     <input type="text" @keyup="$emit('OpferDaten',Opfer)" class="Eingabe" v-model="Opfer.Adresse" placeholder="Adresse" required>
     <input type="text" @keyup="$emit('OpferDaten',Opfer)" class="Eingabe" v-model="Opfer.Ausweisnummer" placeholder="Ausweisnummer">
     <input type="text" @keyup="$emit('OpferDaten',Opfer)" class="Eingabe" v-model="Opfer.Telefonnummer" placeholder="Telefonnummer"> 
+
+    <h4>Es müssen die Felder "Vorname", "Nachname" und "Adresse" ausgefüllt werden</h4>
 </template>
 
 <script>

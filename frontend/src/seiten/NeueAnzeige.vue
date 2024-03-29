@@ -1,7 +1,7 @@
 <template>
     <div>
       <form name="Anzeigenerfassung" @submit.prevent="false">
-        <div class="button-container">
+        <div class="container">
           <Tabs :tabs="tabs">
             <template #Allgemein>
               <div>
@@ -43,7 +43,7 @@ import GeoData from '../components/AnzeigeErstellen/Comps/GeoData.vue'
 
 
 export default {
-  name: 'App',
+  name: 'NeueAnzeige',
   components: {
     Tabs,
     VictimData,
@@ -137,12 +137,13 @@ export default {
 </script>
 
 <style>
-.button-container {
+.container {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  height: 55vh;
+  height: 60vh; /* Increased height to 70vh */
 }
+
 .SubmitButton {
   margin-top: 3rem;
   padding: 1rem;
