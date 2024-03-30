@@ -55,7 +55,9 @@ MongoDB:
  9) npm install fs
  10) npm install mongodb
  11) npm install cors
- 12) npm run dev
+ 12) npm install jsonwebtoken
+ 13) npm install dotenv;
+ 14) npm run dev
  --> Backend sollte auf port 8000 starten, positive Rückmeldung über Konsole
 
  Front End:
