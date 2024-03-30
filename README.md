@@ -53,8 +53,9 @@ MongoDB:
      	"dev": "npx nodemon --exec npx babel-node src/server.mjs"
  8) npm install brcypt
  9) npm install fs
- 10) npm install
- 11) npm run dev
+ 10) npm install mongodb
+ 11) npm install cors
+ 12) npm run dev
  --> Backend sollte auf port 8000 starten, positive Rückmeldung über Konsole
 
  Front End:
