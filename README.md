@@ -37,7 +37,8 @@ MongoDB:
  Back End:
  1) cd ./back-end
  2) npm install
- 3) npm run dev
+ 3) 
+ 4) npm run dev
  --> Backend sollte auf port 8000 starten, positive Rückmeldung über Konsole
 
  Front End:
