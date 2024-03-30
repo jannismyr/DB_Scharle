@@ -27,7 +27,7 @@ Axios: version 1.6.8
 VueX: 4.1.0
 
 
- ## Instalation
+ ## Installation
 
 MongoDB:
  1) Download und Installation von MongoDB Community Server
