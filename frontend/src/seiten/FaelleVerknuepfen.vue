@@ -77,6 +77,12 @@ export default {
       {
         window.location.replace('/login')
       }
+      else{
+      axios.get('/case')
+      .then(result => {
+        this.AlleVeranstaltungen = result.data
+      })
+    }
     }
 };
 </script>

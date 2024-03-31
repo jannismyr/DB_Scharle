@@ -163,42 +163,7 @@ router.get('/Suche', async (req,res) => {
         res.status(404).send("Fehler bei der Suche")
     }
 })
-/*router.get('/Analyse', async (req,res) => {
-    try {
-        const {Suche, Vorwurf, Ort} = req.query
-        console.log("Suche aktiviert")
 
-        const searchedVorwurf = await db.collection('Case').find({
-            $and: [
-                {Tatvorwurf: {$regex: Vorwurf, $options: 'i'}},
-                {'Ort.Bundesland': {$regex: Ort, $options: 'i'}},
-            ] 
-        }).toArray()
-
-        /*const searchedOrt = await db.collection('Case').find({
-            $or: [
-                {'Ort.Bundesland': {$regex: Ort, $options: 'i'}},
-                {'Ort.Ort': {$regex: Ort, $options: 'i'}},
-                {'Ort.Tatort': {$regex: Ort, $options: 'i'}},
-            ] 
-        }).toArray()
-
-        console.log(searchedVorwurf)
-
-        console.log(searchedVorwurf.length)
-
-        //console.log(searchedOrt.length)
-
-
-
-        res.status(200).send(searchedVorwurf)
-
-    } catch (error) {
-        console.error(error);
-        res.status(404).send("Fehler bei der Suche")
-    }
-})
-*/
 router.route('/:Aktenzeichen')
 .get(async (req,res) => {
     try {

@@ -81,7 +81,7 @@ export default {
             this.Zeuge= Zeuge
         },
         beweisSpeichern(Art){
-            alert(Art)
+            alert(Art + " gespeichert")
             switch (Art) {
                 case "Bild":
                     axios.post(`/case/${this.Aktenzeichen}/Beweise?Art=${Art}`, {
