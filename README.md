@@ -66,7 +66,7 @@ MongoDB:
  3) npm install -g @vue/cli (ggf. Vue 3 auswählen)
  3) npm install vue-router@4
  4) npm install axios
- 5) npm install vuex
+ 5) npm install vuex --save
  6) npm run serve
  --> Frontend sollte auf http://localhost:8080/ starten, positive Rückmeldung über Konsole
 

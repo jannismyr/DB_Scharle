@@ -1,7 +1,6 @@
 <template>
  <div class="container">
     <div class="box">
-       <!-- Anzeige der Details der Anzeige -->
           <h1>Aktenzeichen: {{ Aktenzeichen }}</h1>
           <h3>Tatvorwurf: {{ Tat }}</h3>
           <h4>Datum: {{ new Date(Datum).toLocaleDateString() + " " +new Date(Datum).toLocaleTimeString()}}</h4>
@@ -59,11 +58,11 @@
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 3rem;
-  max-width: 31.25rem; /* 500px */
-  transition: box-shadow 0.3s ease-in-out; /* Transitions-Effekt für den Schatten */
+  max-width: 31.25rem; 
+  transition: box-shadow 0.3s ease-in-out; 
 }
 .box:hover{
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Schatten-Effekt beim Überfahren */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); 
   cursor: pointer;
 }
 .heading {

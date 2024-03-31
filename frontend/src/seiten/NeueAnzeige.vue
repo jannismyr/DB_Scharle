@@ -141,7 +141,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  height: 60vh; /* Increased height to 70vh */
+  height: 60vh;
 }
 
 .SubmitButton {

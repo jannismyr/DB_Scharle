@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="box">
-      <!-- Anzeige der Details der Anzeige -->
         <div class="Box">
           <h1>Aktenzeichen: {{ Aktenzeichen }}</h1>
           <h3>Tatvorwurf: {{ Tat }}</h3>

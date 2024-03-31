@@ -69,19 +69,16 @@ export default {
           }
 
       }
-        // Hier kommen die Methoden der Seite
     },
     mounted() {
-        // Hier können Sie Code ausführen, der nach dem Rendern der Seite ausgeführt werden soll
     },
     created(){
-    /*  if (!sessionStorage.getItem('Nutzer'))
+      if (!sessionStorage.getItem('Nutzer'))
       {
         window.location.replace('/login')
       }
-    }*/
-},
-}
+    }
+};
 </script>
 
 <style scoped>

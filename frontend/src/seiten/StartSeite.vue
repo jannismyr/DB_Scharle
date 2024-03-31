@@ -45,10 +45,8 @@ export default {
         this.AlleVeranstaltungen = result.data
       })
     }
-      // Hier kommen die Methoden der Seite
   },
   mounted() {
-      // Hier können Sie Code ausführen, der nach dem Rendern der Seite ausgeführt werden soll
   },
   created(){
     if (!sessionStorage.getItem('Nutzer'))

@@ -55,7 +55,7 @@ export default {
 .Eingabe {
   padding: 1rem;
   width: 60%;
-  margin: 0.5rem 0; /* Stellt den vertikalen Abstand ein */
-  box-sizing: border-box; /* Stellt sicher, dass Padding und Border innerhalb der Breite enthalten sind */
+  margin: 0.5rem 0; 
+  box-sizing: border-box; 
 }
 </style>
