@@ -38,6 +38,14 @@ export const Users = [
         "Nachname": "Schmidt",
         "Passwort": "LisaPass123",
         "Rolle": "Sachbearbeiter"
+    },
+    {
+        "_id": 6,
+        "Benutzername": "Testuser",
+        "Vorname": "Test",
+        "Nachname": "User",
+        "Passwort": "Test123",
+        "Rolle": "Admin"
     }
 ]
 

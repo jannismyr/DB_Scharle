@@ -74,16 +74,16 @@ export default {
     },
     created(){
       if (!sessionStorage.getItem('Nutzer'))
-      {
-        window.location.replace('/login')
-      }
-      else{
+    {
+      window.location.replace('/login')
+    }
+    else{
       axios.get('/case')
       .then(result => {
         this.AlleVeranstaltungen = result.data
       })
     }
-    }
+  }
 };
 </script>
 

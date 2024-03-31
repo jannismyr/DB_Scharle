@@ -32,7 +32,9 @@ VueX: 4.1.0
 MongoDB:
  1) Download und Installation von MongoDB Community Server
  2) Datenbank ausführen
- 3) In Postman eine Post Anfrage an "http://127.0.0.1:8000/Daten/erstellen" senden
+ 3) Eine neue Database hinzufügen
+ 4) 3 Collections mit den Namen "Case", "Crime", "User" hinzufügen (Beispielscreenshot in der Doku)
+ 5) In Postman eine Post Anfrage an "http://127.0.0.1:8000/Daten/erstellen" senden
 
  Back End:
  1) cd ./back-end
